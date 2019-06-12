@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'ApiController@index');
+
+Route::get('/add', 'ApiController@create');
+
+Route::post('/api/add', 'ApiController@store');
+Route::get('/api/delete/{id}', 'ApiController@delete');

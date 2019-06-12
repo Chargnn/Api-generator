@@ -2,12 +2,13 @@
 <html>
     <head>
         <title>@yield('title')</title>
-        @yield('header')
+        @include('partials.header')
     </head>
     <body>
         <div id="contain">
+            @include('partials.menu')
             @yield('content')
+            @include('partials.footer')
         </div>
-        @yield('footer')
     </body>
 </html>
