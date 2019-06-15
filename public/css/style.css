@@ -94,68 +94,66 @@ p {
 	}
 	
 #contain {
-
+	height: 100vh;
 	width:750px;
 	border-right:2px solid #369;
 	border-left:2px solid #369;
 	margin-left:auto;
 	margin-right:auto;
 	background: #FFF ;
-        }
-	
-#header {
-        background: #FFF url('header.jpg') right no-repeat;
-	width:750px;
-        height:165px;
-	border-bottom:1px solid #CCC;
-	
 }
 
 #leftcol {
-
 	width:240px;
 	float:left;
 	padding:5px 0 5px 0;
 	background-color: #fff;
-
 }
 
 #leftcol p {
-
 	padding:3px 18px 3px 18px;
 	margin:0;
-
 }
 
 #content {
-
 	margin-left:240px;
 	width:500px
-
 }
 
 #content p {
-
 	padding:3px 18px 3px 18px;
 	margin:0;
-
 }
 
-#footer {
-
+#header {
 	width:750px;
 	clear:left;
 	border-top:1px solid #369;
 	border-bottom:1px solid #369;
 	background: #6C88A6;
 	padding: 3px 0 3px 0;
+}
 
+#header p {
+	text-align: center;
+	padding-right: 8px;
+}
+
+#footer {
+	position: absolute;
+	padding-left: 750px;
+	bottom: 0;
+	width:750px;
+	clear:left;
+	border-top:1px solid #369;
+	border-bottom:1px solid #369;
+	background: #6C88A6;
+	padding: 3px 0 3px 0;
 }
 
 #footer p {
 	text-align:center;
 	padding-right:8px;
 	font:8pt verdana, arial, sans-serif;
-        
 }
 

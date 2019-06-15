@@ -17,14 +17,15 @@
                 <td>{{ $api->name }}</td>
                 <td>15</td>
                 <td>
-                    <a href="/edit/{{ $api->id }}"></a><button>Edit</button>
-                    <a href="/api/delete/{{ $api->id }}" onclick="return confirm('Are you sure to delete this api?');"><button>Delete</button>
+                    <a href="/routes/{{ $api->id }}"><button>See routes</button></a>
+                    <a href="/edit/{{ $api->id }}"><button>Edit</button></a>
+                    <a href="/api/delete/{{ $api->id }}" onclick="return confirm('Are you sure to delete this api?');"><button>Delete</button></a>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
         <?php else: ?>
-        <h2 class="style5">No api ! <button>Add</button></h2>
+        <h2 class="style5">No api ! <a href="/add"><button>Add</button></a></h2>
         <?php endif; ?>
     </div>
 @endsection

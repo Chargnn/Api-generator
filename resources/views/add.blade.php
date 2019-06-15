@@ -1,5 +1,4 @@
 @extends('layout.layout')
-@extends('partials.header')
 
 @section('title', 'Add route')
 
