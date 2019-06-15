@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Api extends Model
+class Route extends Model
 {
-    protected $table = 'api';
+    protected $table = 'routes';
     public $timestamps = false;
 
     protected $primaryKey = 'id';

@@ -31,14 +31,29 @@ class ApiController extends Controller
         $api->name = $request->api_name;
         $api->save();
 
-        return $this->index();
+        return redirect('/');
     }
 
     // Edit api form
-    public function edit(){}
+    public function edit(){
+        $id = Route::current()->parameter('id');
+        $api = Api::find($id);
+
+        return View('edit')
+            ->with('api', $api);
+    }
 
     // Update api
-    public function update(){}
+    public function update(Request $request){
+        $id = $request->api_id;
+        $name = $request->api_name;
+        $api = Api::find($id);
+
+        $api->name = $name;
+        $api->save();
+
+        return redirect('/');
+    }
 
     // Delete api
     public function delete(){
@@ -46,6 +61,6 @@ class ApiController extends Controller
         $api = Api::find($id);
         $api->delete();
 
-        return $this->index();
+        return redirect('/');
     }
 }
