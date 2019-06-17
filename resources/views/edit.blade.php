@@ -8,8 +8,10 @@
 
         <form action="/api/update" method="POST">
             @csrf
-            <input type="text" name="api_id" value="{{ $api->id }}" readonly="readonly" />
-            <input type="text" name="api_name" value="{{ $api->name }}" required/>
+            <label for="api_id">Api id (readonly)</label>
+            <input type="text" name="api_id" value="{{ $api->id }}" readonly="readonly" /><br />
+            <label for="api_name">Api name</label>
+            <input type="text" name="api_name" value="{{ $api->name }}" required/><br />
             <input type="submit" />
         </form>
     </div>

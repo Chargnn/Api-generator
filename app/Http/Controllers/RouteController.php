@@ -47,23 +47,30 @@ class RouteController extends Controller
 
     // Edit api form
     public function edit(){
-        $id = Route::current()->parameter('id');
-        $api = Api::find($id);
+        $id = Route::current()->parameter('route_id');
+        $route = \App\Route::find($id);
 
-        return View('edit')
-            ->with('api', $api);
+        return View('routes.edit')
+            ->with('route', $route);
     }
 
     // Update api
     public function update(Request $request){
-        $id = $request->api_id;
-        $name = $request->api_name;
-        $api = Api::find($id);
+        $id = $request->route_id;
+        $method = $request->route_method;
+        $route = $request->route_route;
+        $query = $request->route_query;
+        $active = $request->route_active;
+        $routeModel = \App\Route::find($id);
+        $route_api = Route_Api::where('route_id', '=', $id)->first();
 
-        $api->name = $name;
-        $api->save();
+        $routeModel->method = $method;
+        $routeModel->route = $route;
+        $routeModel->query = $query;
+        $routeModel->active = $active;
+        $routeModel->save();
 
-        return redirect('/');
+        return redirect('/routes/' . $route_api->api_id);
     }
 
     // Delete api
