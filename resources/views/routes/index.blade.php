@@ -18,7 +18,7 @@
                 <td>{{ $route->route }}</td>
                 <td>{{ $route->active }}</td>
                 <td>
-                    <a href=""><button>Edit</button></a>
+                    <a href="/routes/edit/{{ $route->id }}"><button>Edit</button></a>
                     <a href="/api/delete/route/{{ $route->id }}" onclick="return confirm('Are you sure to delete this route?');"><button>Delete</button></a>
                 </td>
             </tr>
