@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Api;
+use App\Database;
+use App\Database_Api;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -39,8 +41,12 @@ class ApiController extends Controller
         $id = Route::current()->parameter('id');
         $api = Api::find($id);
 
+        $database_api = Database_Api::where('api_id', '=', $id)->first();
+        $database = Database::find($database_api->database_id);
+
         return View('edit')
-            ->with('api', $api);
+            ->with('api', $api)
+            ->with('database', $database);
     }
 
     // Update api

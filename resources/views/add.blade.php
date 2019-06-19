@@ -16,7 +16,7 @@
 
         <h2 class="style5">Set database connection to this api</h2>
 
-        <form action="" method="POST">
+        <form action="/database/add" method="POST">
             @csrf
             <label for="database_host">Host</label>
             <input type="text" name="database_host" placeholder="127.0.0.1" required/><br />
