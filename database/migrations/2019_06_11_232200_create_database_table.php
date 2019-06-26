@@ -15,6 +15,8 @@ class CreateDatabaseTable extends Migration
     {
         Schema::create('database', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('api_id');
+            $table->foreign('api_id')->references('id')->on('api')->onDelete('cascade');
             $table->string('host');
             $table->string('username');
             $table->string('password');

@@ -33,6 +33,18 @@ class ApiController extends Controller
         $api->name = $request->api_name;
         $api->save();
 
+        $database = new Database();
+        $database->host = $request->host;
+        $database->username = $request->username;
+        $database->password = $request->password;
+        $database->charset = $request->charset;
+        $database->save();
+
+        $database_api = new Database_Api();
+        $database_api->database_id = $database->id;
+        $database_api->api_id = $api->id;
+        $database_api->save();
+
         return redirect('/');
     }
 
