@@ -16,13 +16,12 @@
             <?php if($database): ?>
                 <h2 class="style5">Edit database connection to this api</h2>
 
-                @csrf
                 <label for="database_host">Host</label>
                 <input type="text" name="database_host" value="{{ $database->host }}" required/><br/>
                 <label for="database_username">Username</label>
                 <input type="text" name="database_username" value="{{ $database->username }}" required/><br/>
                 <label for="database_password">Password</label>
-                <input type="password" name="database_password" value="{{ $database->password }}" required/><br/>
+                <input type="password" name="database_password" value="{{ $database->password }}" /><br/>
                 <label for="database_database">Database</label>
                 <input type="text" name="database_database" value="{{ $database->database }}" required/><br/>
                 <label for="database_charset">Charset</label>

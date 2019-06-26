@@ -38,7 +38,7 @@ class ApiController extends Controller
         $database->api_id = $api->id;
         $database->host = $request->database_host;
         $database->username = $request->database_username;
-        $database->password = $request->database_password;
+        $database->password = $request->database_password ? $request->database_password : '';
         $database->database = $request->database_database;
         $database->charset = $request->database_charset;
         $database->save();
@@ -66,7 +66,7 @@ class ApiController extends Controller
         $database = Database::where('api_id', '=', $api->id)->first();
         $database->host = $request->host;
         $database->username = $request->username;
-        $database->password = $request->password;
+        $database->password = $request->database_password ? $request->database_password : '';
         $database->database = $request->database;
         $database->charset = $request->charset;
 
