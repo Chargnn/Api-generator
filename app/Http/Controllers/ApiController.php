@@ -10,13 +10,14 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 class ApiController extends Controller
 {
     // List api
     public function index(){
-        $api_list = Api::all();
+        $api_list = DB::table('api')->paginate(4);
 
         return View('index')
                ->with('api_list', $api_list);
@@ -34,16 +35,13 @@ class ApiController extends Controller
         $api->save();
 
         $database = new Database();
-        $database->host = $request->host;
-        $database->username = $request->username;
-        $database->password = $request->password;
-        $database->charset = $request->charset;
+        $database->api_id = $api->id;
+        $database->host = $request->database_host;
+        $database->username = $request->database_username;
+        $database->password = $request->database_password;
+        $database->database = $request->database_database;
+        $database->charset = $request->database_charset;
         $database->save();
-
-        $database_api = new Database_Api();
-        $database_api->database_id = $database->id;
-        $database_api->api_id = $api->id;
-        $database_api->save();
 
         return redirect('/');
     }
@@ -53,8 +51,7 @@ class ApiController extends Controller
         $id = Route::current()->parameter('id');
         $api = Api::find($id);
 
-        $database_api = Database_Api::where('api_id', '=', $id)->first();
-        $database = Database::find($database_api->database_id);
+        $database = Database::where('api_id', '=', $api->id)->first();
 
         return View('edit')
             ->with('api', $api)
@@ -63,12 +60,18 @@ class ApiController extends Controller
 
     // Update api
     public function update(Request $request){
-        $id = $request->api_id;
-        $name = $request->api_name;
-        $api = Api::find($id);
+        $api = Api::find($request->api_id);
+        $api->name = $request->api_name;
 
-        $api->name = $name;
+        $database = Database::where('api_id', '=', $api->id)->first();
+        $database->host = $request->host;
+        $database->username = $request->username;
+        $database->password = $request->password;
+        $database->database = $request->database;
+        $database->charset = $request->charset;
+
         $api->save();
+        $database->save();
 
         return redirect('/');
     }
