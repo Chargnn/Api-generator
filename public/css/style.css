@@ -1,7 +1,7 @@
 
 
 body { 
-	font:8pt verdana; 
+	font:10pt verdana;
 	background: #fff;
 	margin:0;
 	padding:0;
@@ -95,7 +95,7 @@ p {
 	
 #contain {
 	height: 100vh;
-	width:750px;
+	width:70%;
 	border-right:2px solid #369;
 	border-left:2px solid #369;
 	margin-left:auto;
@@ -117,7 +117,7 @@ p {
 
 #content {
 	margin-left:240px;
-	width:500px
+	width:70%;
 }
 
 #content p {
@@ -126,7 +126,6 @@ p {
 }
 
 #header {
-	width:750px;
 	clear:left;
 	border-top:1px solid #369;
 	border-bottom:1px solid #369;
@@ -143,7 +142,7 @@ p {
 	position: absolute;
 	padding-left: 750px;
 	bottom: 0;
-	width:750px;
+	width:70%;
 	clear:left;
 	border-top:1px solid #369;
 	border-bottom:1px solid #369;
@@ -157,3 +156,28 @@ p {
 	font:8pt verdana, arial, sans-serif;
 }
 
+
+.page-item.active .page-link,
+.pagination-datatables li.active .page-link,
+.pagination li.active .page-link,
+**.pagination li.active span,**,
+.page-item.active .pagination-datatables li a,
+.pagination-datatables li .page-item.active a,
+.pagination-datatables li.active a,
+.page-item.active .pagination li a,
+.pagination li .page-item.active a,
+.pagination li.active a {
+	z-index: 2;
+	color: #fff;
+	background-color: #20a8d8;
+	border-color: #20a8d8;
+}
+.page-link, .pagination-datatables li a, .pagination li a, .pagination span {
+	position: relative;
+	display: block;
+	padding: 0.5rem 0.75rem;
+	margin-left: -1px;
+	line-height: 1.25;
+	color: #20a8d8;
+	background-color: #fff;
+	border: 1px solid #ddd; }

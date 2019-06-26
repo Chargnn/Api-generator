@@ -13,21 +13,5 @@ use Illuminate\Support\Facades\Route;
 
 class DatabaseController extends Controller
 {
-    // Store api in DB
-    public function store(Request $request){
-
-        return redirect('/');
-    }
-
-    // Update api
-    public function update(Request $request){
-
-        return redirect('/');
-    }
-
-    // Delete api
-    public function delete(){
-
-        return redirect('/');
-    }
+    // Empty for now
 }

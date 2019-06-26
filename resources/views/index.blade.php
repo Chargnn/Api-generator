@@ -25,6 +25,7 @@
                     <a href="/edit/{{ $api->id }}">
                         <button>Edit</button>
                     </a>
+                    <!-- TODO: ajax call to delete without href -->
                     <a href="/api/delete/{{ $api->id }}" onclick="return confirm('Are you sure to delete this api?');">
                         <button>Delete</button>
                     </a>
