@@ -6,7 +6,7 @@
     <div id="content">
         <h2 class="style5">Edit route</h2>
 
-        <form action="/api/update/route" method="POST">
+        <form action="/route/update" method="POST">
             @csrf
             <label for="route_id">Route id (readonly)</label>
             <input type="text" name="route_id" value="{{ $route->id }}" readonly="readonly" required/><br />

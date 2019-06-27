@@ -7,6 +7,9 @@
         <?php if($api_list && count($api_list) > 0): ?>
         <h2 class="style5">API list <a href="/add">
                 <button>Add</button>
+            </a>
+            <a href="/export">
+                <button>Export all</button>
             </a></h2>
         <table>
             <tr>
@@ -38,6 +41,6 @@
                 <button>Add</button>
             </a></h2>
         <?php endif; ?>
-        {{ $api_list->links() }}
+        {!! $api_list->links() !!}
     </div>
 @endsection

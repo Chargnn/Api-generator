@@ -64,11 +64,11 @@ class ApiController extends Controller
         $api->name = $request->api_name;
 
         $database = Database::where('api_id', '=', $api->id)->first();
-        $database->host = $request->host;
-        $database->username = $request->username;
+        $database->host = $request->database_host;
+        $database->username = $request->database_username;
         $database->password = $request->database_password ? $request->database_password : '';
-        $database->database = $request->database;
-        $database->charset = $request->charset;
+        $database->database = $request->database_database;
+        $database->charset = $request->database_charset;
 
         $api->save();
         $database->save();

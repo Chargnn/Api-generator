@@ -24,7 +24,8 @@ Route::post('/api/update', 'ApiController@update');
 //Route routes
 Route::get('/routes/{api_id}', 'RouteController@index');
 Route::get('/routes/add/{api_id}', 'RouteController@create');
+Route::get('/routes/edit/{route_id}', 'RouteController@edit');
 
 Route::post('/route/add', 'RouteController@store');
-Route::get('/route/delete/{id}', 'RouteController@delete');
+Route::get('/route/delete/{route_id}', 'RouteController@delete');
 Route::post('/route/update', 'RouteController@update');

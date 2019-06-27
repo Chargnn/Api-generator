@@ -117,7 +117,6 @@ p {
 
 #content {
 	margin-left:240px;
-	width:70%;
 }
 
 #content p {
@@ -156,28 +155,33 @@ p {
 	font:8pt verdana, arial, sans-serif;
 }
 
-
-.page-item.active .page-link,
-.pagination-datatables li.active .page-link,
-.pagination li.active .page-link,
-**.pagination li.active span,**,
-.page-item.active .pagination-datatables li a,
-.pagination-datatables li .page-item.active a,
-.pagination-datatables li.active a,
-.page-item.active .pagination li a,
-.pagination li .page-item.active a,
-.pagination li.active a {
-	z-index: 2;
-	color: #fff;
-	background-color: #20a8d8;
-	border-color: #20a8d8;
+.pagination{
+	list-style-type: none;
 }
-.page-link, .pagination-datatables li a, .pagination li a, .pagination span {
-	position: relative;
-	display: block;
-	padding: 0.5rem 0.75rem;
-	margin-left: -1px;
-	line-height: 1.25;
-	color: #20a8d8;
-	background-color: #fff;
-	border: 1px solid #ddd; }
+
+.page-item{
+	color: black;
+	float: left;
+	display: inline-block;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.page-item a{
+	color: black;
+	text-decoration: none;
+}
+
+.page-link{
+	padding: 8px 16px;
+}
+
+.page-item:hover {
+	color: white;
+	background-color: #2B4F77;
+}
+
+.active {
+	background-color: #6C88A6;
+	color: white;
+}
