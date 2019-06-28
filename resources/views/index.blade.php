@@ -9,7 +9,7 @@
                 <button>Add</button>
             </a>
             <a href="/export">
-                <button>Export all</button>
+            <button>Export all</button>
             </a></h2>
         <table>
             <tr>
@@ -43,4 +43,6 @@
         <?php endif; ?>
         {!! $api_list->links() !!}
     </div>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection

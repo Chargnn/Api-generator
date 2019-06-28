@@ -29,3 +29,5 @@ Route::get('/routes/edit/{route_id}', 'RouteController@edit');
 Route::post('/route/add', 'RouteController@store');
 Route::get('/route/delete/{route_id}', 'RouteController@delete');
 Route::post('/route/update', 'RouteController@update');
+
+Route::get('/export', 'ImportExportController@export');
