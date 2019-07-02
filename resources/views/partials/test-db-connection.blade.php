@@ -1,1 +1,1 @@
-<button>Test database connexion</button> <span class="success hidden">OK!</span><span class="error hidden">Failed!</span><br/>
+<button>Test database connection</button> <span class="success hidden">OK!</span><span class="error hidden">Failed!</span><br/>
