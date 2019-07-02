@@ -27,6 +27,8 @@
                 <label for="database_charset">Charset</label>
                 <input type="text" name="database_charset" value="{{ $database->charset }}" required/><br/>
 
+                @include('partials.test-db-connection')
+
                 <input type="submit"/>
             <?php else: ?>
                 <h2 class="style5">No database for this api, add it manually in the application db</h2>

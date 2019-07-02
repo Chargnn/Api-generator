@@ -24,6 +24,8 @@
             <label for="database_charset">Charset</label>
             <input type="text" name="database_charset" placeholder="utf8" required/><br />
 
+            @include('partials.test-db-connection')
+
             <input type="submit" />
         </form>
 

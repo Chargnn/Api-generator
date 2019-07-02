@@ -185,3 +185,15 @@ p {
 	background-color: #6C88A6;
 	color: white;
 }
+
+.success {
+	color: #38c172;
+}
+
+.error {
+	color: #e3342f;
+}
+
+.hidden {
+	display: none;
+}
