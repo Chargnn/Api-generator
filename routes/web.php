@@ -30,4 +30,6 @@ Route::post('/route/add', 'RouteController@store');
 Route::get('/route/delete/{route_id}', 'RouteController@delete');
 Route::post('/route/update', 'RouteController@update');
 
-Route::get('/export', 'ImportExportController@export');
+// AJAX calls
+Route::get('/export', 'Utils@export');
+Route::post('/testDbConnection', 'Utils@testDbConnection');

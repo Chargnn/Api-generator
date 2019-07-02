@@ -29,7 +29,7 @@
 
                 @include('partials.test-db-connection')
 
-                <input type="submit"/>
+                <button type="submit">Submit</button>
             <?php else: ?>
                 <h2 class="style5">No database for this api, add it manually in the application db</h2>
             <?php endif; ?>
