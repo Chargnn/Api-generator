@@ -32,13 +32,13 @@ class Utils extends Controller
     public function testDbConnection(Request $request){
 
         try{
-            $this->pdo = new \PDO($request->database_host,
+            $this->pdo = new \PDO('mysql:dbname='.$request->database_database.';host='.$request->database_host.';port=3306',
                                  $request->database_user,
                                  $request->database_password,
                                  [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]);
             return 'true';
         } catch(\Exception $e) {
-            return 'false';
+            return $e;
         }
     }
 }
