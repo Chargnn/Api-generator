@@ -24,8 +24,6 @@
                 <input type="password" name="database_password" value="{{ $database->password }}" /><br/>
                 <label for="database_database">Database</label>
                 <input type="text" name="database_database" value="{{ $database->database }}" required/><br/>
-                <label for="database_charset">Charset</label>
-                <input type="text" name="database_charset" value="{{ $database->charset }}" required/><br/>
 
                 @include('partials.test-db-connection')
 

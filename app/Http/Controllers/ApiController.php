@@ -40,7 +40,6 @@ class ApiController extends Controller
         $database->username = $request->database_username;
         $database->password = $request->database_password ? $request->database_password : '';
         $database->database = $request->database_database;
-        $database->charset = $request->database_charset;
         $database->save();
 
         return redirect('/');
@@ -68,7 +67,6 @@ class ApiController extends Controller
         $database->username = $request->database_username;
         $database->password = $request->database_password ? $request->database_password : '';
         $database->database = $request->database_database;
-        $database->charset = $request->database_charset;
 
         $api->save();
         $database->save();

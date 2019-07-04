@@ -21,8 +21,6 @@
             <input type="password" name="database_password" placeholder="password" /><br />
             <label for="database_database">Database</label>
             <input type="text" name="database_database" placeholder="database" required/><br />
-            <label for="database_charset">Charset</label>
-            <input type="text" name="database_charset" placeholder="utf8" required/><br />
 
             @include('partials.test-db-connection')
 

@@ -21,7 +21,6 @@ class CreateDatabaseTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('database');
-            $table->string('charset');
         });
     }
 
