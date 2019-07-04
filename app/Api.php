@@ -10,4 +10,12 @@ class Api extends Model
     public $timestamps = false;
 
     protected $primaryKey = 'id';
+
+    public function routes(){
+        return $this->hasMany(Route::class);
+    }
+
+    public function database(){
+        return $this->hasOne(Database::class);
+    }
 }

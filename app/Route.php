@@ -10,4 +10,8 @@ class Route extends Model
     public $timestamps = false;
 
     protected $primaryKey = 'id';
+
+    public function api(){
+        return $this->belongsTo(Api::class);
+    }
 }

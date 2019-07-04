@@ -14,7 +14,7 @@ class CreateApiTable extends Migration
     public function up()
     {
         Schema::create('api', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedInteger('id');
             $table->string('name');
         });
     }

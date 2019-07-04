@@ -31,7 +31,7 @@ class ApiController extends Controller
     // Edit api form
     public function edit($api_id){
         $api = Api::find($api_id);
-        $database = Database::where('api_id', '=', $api->id)->first();
+        $database = $api->database()->first();
 
         return View('edit')
             ->with('api', $api)
@@ -75,7 +75,7 @@ class ApiController extends Controller
         $api = Api::find($api_id);
         $api->name = request('api_name');
 
-        $database = Database::where('api_id', '=', $api->id)->first();
+        $database = $api->database()->first();
         $database->host = request('database_host');
         $database->username = request('database_username');
         $database->password = request('database_password') ? request('database_password') : '';

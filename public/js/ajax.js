@@ -32,7 +32,8 @@ function deleteApi(id, csrfToken){
         url: '/api/delete/' + id,
         method: 'DELETE',
         data: {
-            _token: csrfToken
+            _token: csrfToken,
+            _method: 'DELETE'
         },
         success: function(response){
             if(response === 'true'){
@@ -47,7 +48,8 @@ function deleteRoute(id, csrfToken){
         url: '/routes/delete/' + id,
         method: 'DELETE',
         data: {
-            _token: csrfToken
+            _token: csrfToken,
+            _method: 'DELETE'
         },
         success: function(response){
             if(response === 'true'){

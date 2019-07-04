@@ -11,7 +11,7 @@ class RouteController extends Controller
 {
     // List api
     public function index($api_id){
-        $routes = \App\Route::where('api_id', '=', $api_id)->paginate(4);
+        $routes = \App\Route::where('api_id', '=', $api_id)->paginate(20);
 
         return View('routes.index')
             ->with('api_id', $api_id)

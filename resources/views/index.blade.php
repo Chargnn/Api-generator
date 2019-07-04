@@ -20,7 +20,7 @@
             <?php foreach($api_list as $api): ?>
             <tr>
                 <td>{{ $api->name }}</td>
-                <td>todo</td>
+                <td>{{ count($api->routes) }}</td>
                 <td>
                     <a href="/routes/{{ $api->id }}">
                         <button>See routes</button>
