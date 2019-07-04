@@ -40,6 +40,13 @@ class ApiController extends Controller
 
     // Store api in DB
     public function store(){
+        request()->validate([
+            'api_name' => 'required|min:3|max:255',
+            'database_host' => 'required|max:255',
+            'database_username' => 'required|max:255',
+            'database_database' => 'required|max:255'
+        ]);
+
         $api = new Api();
         $api->name = request('api_name');
 
@@ -58,6 +65,13 @@ class ApiController extends Controller
 
     // Update api
     public function update($api_id){
+        request()->validate([
+            'api_name' => 'required|min:3|max:255',
+            'database_host' => 'required|max:255',
+            'database_username' => 'required|max:255',
+            'database_database' => 'required|max:255'
+        ]);
+
         $api = Api::find($api_id);
         $api->name = request('api_name');
 

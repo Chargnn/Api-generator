@@ -34,6 +34,13 @@ class RouteController extends Controller
 
     // Store route in DB
     public function store(){
+        request()->validate([
+            'api_id' => 'required|min:1',
+            'route_method' => 'required|min:3|max:255',
+            'route_route' => 'required|max:255',
+            'route_query' => 'required|max:255'
+        ]);
+
         $route = new \App\Route();
         $route->api_id =  request('api_id');
         $route->method = request('route_method');
@@ -47,6 +54,13 @@ class RouteController extends Controller
 
     // Update api
     public function update($route_id){
+        request()->validate([
+            'route_method' => 'required|min:3|max:255',
+            'route_route' => 'required|max:255',
+            'route_query' => 'required|max:255',
+            'route_active' => 'required'
+        ]);
+
         $route = \App\Route::find($route_id);
 
         $route->method = request('route_method');

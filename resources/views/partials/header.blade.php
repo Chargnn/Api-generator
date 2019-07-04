@@ -3,3 +3,5 @@
         <?php //links ? ?>
     </p>
 </div>
+
+@include('partials.notifications')

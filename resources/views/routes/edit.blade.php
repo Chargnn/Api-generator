@@ -11,15 +11,15 @@
             {{ method_field('PATCH') }}
 
             <label for="route_id">Route id (readonly)</label>
-            <input type="text" name="route_id" value="{{ $route->id }}" readonly="readonly" required/><br />
+            <input type="text" class="{{ $errors->has('route_id') ? 'invalid-input' : '' }}" name="route_id" value="{{ $route->id }}" minlength="1" readonly="readonly" required/><br />
             <label for="route_method">Route method</label>
-            <input type="text" name="route_method" placeholder="GET" value="{{ $route->method }}" required/><br />
+            <input type="text" class="{{ $errors->has('route_method') ? 'invalid-input' : '' }}" name="route_method" placeholder="GET" minlength="1" maxlength="255" value="{{ $route->method }}" required/><br />
             <label for="route_route">Route path</label>
-            <input type="text" name="route_route" placeholder="/api/all/user" value="{{ $route->route }}" required/><br />
+            <input type="text" class="{{ $errors->has('route_route') ? 'invalid-input' : '' }}" name="route_route" placeholder="/api/all/user" minlength="1" maxlength="255" value="{{ $route->route }}" required/><br />
             <label for="route_query">Route query</label>
-            <textarea name="route_query" placeholder="SELECT * FROM user" required>{{ $route->query }}</textarea><br />
+            <textarea class="{{ $errors->has('route_query') ? 'invalid-input' : '' }}" name="route_query" placeholder="SELECT * FROM user" minlength="1" maxlength="255" required>{{ $route->query }}</textarea><br />
             <label for="route_active">Route active</label>
-            <input type="text" name="route_active"  value="{{ $route->active }}" required/><br />
+            <input type="checkbox" class="{{ $errors->has('route_active') ? 'invalid-input' : '' }}" name="route_active" value="{{ $route->active ? 'true' : 'false' }}"  {{ $route->active ? 'checked' : '' }} required/><br />
             <input type="submit" />
         </form>
     </div>
