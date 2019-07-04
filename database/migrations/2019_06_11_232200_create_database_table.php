@@ -19,7 +19,7 @@ class CreateDatabaseTable extends Migration
             $table->foreign('api_id')->references('id')->on('api')->onDelete('cascade');
             $table->string('host');
             $table->string('username');
-            $table->string('password');
+            $table->string('password')->default('');
             $table->string('database');
         });
     }
