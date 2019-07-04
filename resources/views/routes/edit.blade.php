@@ -6,8 +6,10 @@
     <div id="content">
         <h2 class="style5">Edit route</h2>
 
-        <form action="/route/update" method="POST">
+        <form action="/routes/update/{{ $route->id }}" method="POST">
             @csrf
+            {{ method_field('PATCH') }}
+
             <label for="route_id">Route id (readonly)</label>
             <input type="text" name="route_id" value="{{ $route->id }}" readonly="readonly" required/><br />
             <label for="route_method">Route method</label>

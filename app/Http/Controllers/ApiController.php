@@ -17,7 +17,7 @@ class ApiController extends Controller
 {
     // List api
     public function index(){
-        $api_list = DB::table('api')->paginate(4);
+        $api_list = Api::paginate(20);
 
         return View('index')
                ->with('api_list', $api_list);
@@ -28,28 +28,9 @@ class ApiController extends Controller
         return View('add');
     }
 
-    // Store api in DB
-    public function store(Request $request){
-        $api = new Api();
-        $api->name = $request->api_name;
-        $api->save();
-
-        $database = new Database();
-        $database->api_id = $api->id;
-        $database->host = $request->database_host;
-        $database->username = $request->database_username;
-        $database->password = $request->database_password ? $request->database_password : '';
-        $database->database = $request->database_database;
-        $database->save();
-
-        return redirect('/');
-    }
-
     // Edit api form
-    public function edit(){
-        $id = Route::current()->parameter('id');
-        $api = Api::find($id);
-
+    public function edit($api_id){
+        $api = Api::find($api_id);
         $database = Database::where('api_id', '=', $api->id)->first();
 
         return View('edit')
@@ -57,16 +38,34 @@ class ApiController extends Controller
             ->with('database', $database);
     }
 
+    // Store api in DB
+    public function store(){
+        $api = new Api();
+        $api->name = request('api_name');
+
+        $database = new Database();
+        $database->api_id = $api->id;
+        $database->host = request('database_host');
+        $database->username = request('database_username');
+        $database->password = request('database_password') ? request('database_password') : '';
+        $database->database = request('database_database');
+
+        $api->save();
+        $database->save();
+
+        return redirect('/');
+    }
+
     // Update api
-    public function update(Request $request){
-        $api = Api::find($request->api_id);
-        $api->name = $request->api_name;
+    public function update($api_id){
+        $api = Api::find($api_id);
+        $api->name = request('api_name');
 
         $database = Database::where('api_id', '=', $api->id)->first();
-        $database->host = $request->database_host;
-        $database->username = $request->database_username;
-        $database->password = $request->database_password ? $request->database_password : '';
-        $database->database = $request->database_database;
+        $database->host = request('database_host');
+        $database->username = request('database_username');
+        $database->password = request('database_password') ? request('database_password') : '';
+        $database->database = request('database_database');
 
         $api->save();
         $database->save();
@@ -75,9 +74,8 @@ class ApiController extends Controller
     }
 
     // Delete api
-    public function delete(){
-        $id = Route::current()->parameter('id');
-        $api = Api::find($id);
+    public function delete($api_id){
+        $api = Api::find($api_id);
         $api->delete();
 
         return redirect('/');

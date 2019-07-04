@@ -19,7 +19,7 @@
                 <td>{{ $route->active }}</td>
                 <td>
                     <a href="/routes/edit/{{ $route->id }}"><button>Edit</button></a>
-                    <a href="/route/delete/{{ $route->id }}" onclick="return confirm('Are you sure to delete this route?');"><button>Delete</button></a>
+                    <button onclick="deleteRoute({{ $route->id }}, '{{ csrf_token() }}')">Delete</button>
                 </td>
             </tr>
             <?php endforeach; ?>

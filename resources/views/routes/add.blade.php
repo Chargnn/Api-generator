@@ -6,7 +6,7 @@
     <div id="content">
         <h2 class="style5">Add route</h2>
 
-        <form action="/route/add" method="POST">
+        <form action="/routes/add" method="POST">
             @csrf
             <input type="hidden" name="api_id" value="{{$api_id}}" required/>
             <label for="route_method">Route method</label>

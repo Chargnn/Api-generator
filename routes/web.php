@@ -14,21 +14,21 @@
 Route::get('/', 'ApiController@index');
 
 // API routes
-Route::get('/add', 'ApiController@create');
-Route::get('/edit/{id}', 'ApiController@edit');
+Route::get('/api/add', 'ApiController@create');
+Route::get('/api/edit/{api_id}', 'ApiController@edit');
 
 Route::post('/api/add', 'ApiController@store');
-Route::get('/api/delete/{id}', 'ApiController@delete');
-Route::post('/api/update', 'ApiController@update');
+Route::patch('/api/update/{api_id}', 'ApiController@update');
+Route::delete('/api/delete/{api_id}', 'ApiController@delete');
 
 //Route routes
 Route::get('/routes/{api_id}', 'RouteController@index');
 Route::get('/routes/add/{api_id}', 'RouteController@create');
 Route::get('/routes/edit/{route_id}', 'RouteController@edit');
 
-Route::post('/route/add', 'RouteController@store');
-Route::get('/route/delete/{route_id}', 'RouteController@delete');
-Route::post('/route/update', 'RouteController@update');
+Route::post('/routes/add', 'RouteController@store');
+Route::patch('/routes/update/{route_id}', 'RouteController@update');
+Route::delete('/routes/delete/{route_id}', 'RouteController@delete');
 
 // AJAX calls
 Route::get('/export', 'Utils@export');

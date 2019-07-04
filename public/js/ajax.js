@@ -26,3 +26,33 @@ function testDbConnection(){
         }
     });
 }
+
+function deleteApi(id, csrfToken){
+    $.ajax({
+        url: '/api/delete/' + id,
+        method: 'DELETE',
+        data: {
+            _token: csrfToken
+        },
+        success: function(response){
+            if(response === 'true'){
+                location.reload();
+            }
+        }
+    });
+}
+
+function deleteRoute(id, csrfToken){
+    $.ajax({
+        url: '/routes/delete/' + id,
+        method: 'DELETE',
+        data: {
+            _token: csrfToken
+        },
+        success: function(response){
+            if(response === 'true'){
+                location.reload();
+            }
+        }
+    });
+}
