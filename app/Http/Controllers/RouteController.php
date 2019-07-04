@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 class RouteController extends Controller
 {
+    private $route_pagination = 20;
+
     // List api
     public function index($api_id){
-        $routes = \App\Route::where('api_id', '=', $api_id)->paginate(20);
+        $routes = \App\Route::where('api_id', '=', $api_id)->paginate($this->route_pagination);
 
         return View('routes.index')
             ->with('api_id', $api_id)
