@@ -58,7 +58,6 @@ class RouteController extends Controller
             'route_method' => 'required|min:3|max:255',
             'route_route' => 'required|max:255',
             'route_query' => 'required|max:255',
-            'route_active' => 'required'
         ]);
 
         $route = \App\Route::find($route_id);
@@ -66,7 +65,7 @@ class RouteController extends Controller
         $route->method = request('route_method');
         $route->route = request('route_route');
         $route->query = request('route_query');
-        $route->active = request('route_active');
+        $route->active = request('route_active') ? true : false;
         $route->save();
 
         return redirect('/routes/' . $route->api_id);

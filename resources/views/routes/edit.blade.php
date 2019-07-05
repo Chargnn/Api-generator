@@ -19,7 +19,7 @@
             <label for="route_query">Route query</label>
             <textarea class="{{ $errors->has('route_query') ? 'invalid-input' : '' }}" name="route_query" placeholder="SELECT * FROM user" minlength="1" maxlength="255" required>{{ $route->query }}</textarea><br />
             <label for="route_active">Route active</label>
-            <input type="checkbox" class="{{ $errors->has('route_active') ? 'invalid-input' : '' }}" name="route_active" value="{{ $route->active ? 'true' : 'false' }}"  {{ $route->active ? 'checked' : '' }} required/><br />
+            <input type="checkbox" class="{{ $errors->has('route_active') ? 'invalid-input' : '' }}" name="route_active" value="{{ $route->active ? 'true' : 'false' }}"  {{ $route->active ? 'checked' : '' }}/><br />
             <input type="submit" />
         </form>
     </div>
