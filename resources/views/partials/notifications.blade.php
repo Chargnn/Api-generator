@@ -1,9 +1,9 @@
-<?php if($errors->any()): ?>
+@if($errors->any())
 <div class="error">
     <ul>
-        <?php foreach($errors->all() as $error): ?>
+        @foreach($errors->all() as $error)
             <li>{{ $error }}</li>
-        <?php endforeach; ?>
+        @endforeach
     </ul>
 </div>
-<?php endif; ?>
+@endif

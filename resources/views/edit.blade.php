@@ -15,7 +15,7 @@
             <label for="api_name">Api name</label>
             <input type="text" class="{{ $errors->has('api_name') ? 'invalid-input' : '' }}" name="api_name" value="{{ $api->name }}" minlength="3" maxlength="255" required/><br/>
 
-            <?php if($database): ?>
+            @if($database)
                 <h2 class="style5">Edit database connection to this api</h2>
 
                 <label for="database_host">Host</label>
@@ -30,9 +30,9 @@
                 @include('partials.test-db-connection')
 
                 <button type="submit">Submit</button>
-            <?php else: ?>
+            @else
                 <h2 class="style5">No database for this api, add it manually in the application db</h2>
-            <?php endif; ?>
+            @endif
         </form>
     </div>
 @endsection

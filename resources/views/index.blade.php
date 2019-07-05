@@ -4,7 +4,7 @@
 
 @section('content')
     <div id="content">
-        <?php if($api_list && count($api_list) > 0): ?>
+        @if($api_list && count($api_list) > 0)
         <h2 class="style5">API list <a href="/api/add">
                 <button>Add</button>
             </a>
@@ -17,7 +17,7 @@
                 <th>Routes count</th>
                 <th>Actions</th>
             </tr>
-            <?php foreach($api_list as $api): ?>
+            @foreach($api_list as $api)
             <tr>
                 <td>{{ $api->name }}</td>
                 <td>{{ count($api->routes) }}</td>
@@ -31,13 +31,13 @@
                     <button onclick="deleteApi({{ $api->id }}, '{{ csrf_token() }}')">Delete</button>
                 </td>
             </tr>
-            <?php endforeach; ?>
+            @endforeach
         </table>
-        <?php else: ?>
+        @else
         <h2 class="style5">No api ! <a href="/add">
                 <button>Add</button>
             </a></h2>
-        <?php endif; ?>
+        @endif
         {!! $api_list->links() !!}
     </div>
 @endsection
