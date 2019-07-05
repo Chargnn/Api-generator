@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 class ApiController extends Controller
 {
+    private $api_pagination = 20;
+
     // List api
     public function index(){
-        $api_list = Api::paginate(20);
+        $api_list = Api::paginate($this->api_pagination);
 
         return View('index')
                ->with('api_list', $api_list);
