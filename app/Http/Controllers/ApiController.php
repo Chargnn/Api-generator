@@ -4,14 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Api;
 use App\Database;
-use App\Database_Api;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
 
 class ApiController extends Controller
 {
@@ -29,8 +21,8 @@ class ApiController extends Controller
     }
 
     // Edit api form
-    public function edit($api_id){
-        $api = Api::find($api_id);
+    public function edit(Api $api_id){
+        $api = $api_id;
         $database = $api->database()->first();
 
         return View('edit')
@@ -64,7 +56,7 @@ class ApiController extends Controller
     }
 
     // Update api
-    public function update($api_id){
+    public function update(Api $api_id){
         request()->validate([
             'api_name' => 'required|min:3|max:255',
             'database_host' => 'required|max:255',
@@ -72,7 +64,7 @@ class ApiController extends Controller
             'database_database' => 'required|max:255'
         ]);
 
-        $api = Api::find($api_id);
+        $api = $api_id;
         $api->name = request('api_name');
 
         $database = $api->database()->first();
@@ -88,9 +80,8 @@ class ApiController extends Controller
     }
 
     // Delete api
-    public function delete($api_id){
-        $api = Api::find($api_id);
-        $api->delete();
+    public function delete(Api $api_id){
+        $api_id->delete();
 
         return redirect('/');
     }

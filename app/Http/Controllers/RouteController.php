@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Api;
-use App\Route_Api;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Route;
 
 class RouteController extends Controller
 {
     // List api
     public function index($api_id){
-        $routes = \App\Route::where('api_id', '=', $api_id)->paginate(20);
+        $routes = Route::where('api_id', '=', $api_id)->paginate(20);
 
         return View('routes.index')
             ->with('api_id', $api_id)
@@ -25,8 +22,8 @@ class RouteController extends Controller
     }
 
     // Edit api form
-    public function edit($route_id){
-        $route = \App\Route::find($route_id);
+    public function edit(Route $route_id){
+        $route = $route_id;
 
         return View('routes.edit')
             ->with('route', $route);
@@ -41,7 +38,7 @@ class RouteController extends Controller
             'route_query' => 'required|max:255'
         ]);
 
-        $route = new \App\Route();
+        $route = new Route();
         $route->api_id =  request('api_id');
         $route->method = request('route_method');
         $route->route = request('route_route');
@@ -53,7 +50,7 @@ class RouteController extends Controller
     }
 
     // Update api
-    public function update($route_id){
+    public function update(Route $route_id){
         request()->validate([
             'route_method' => 'required|min:3|max:255',
             'route_route' => 'required|max:255',
@@ -61,7 +58,7 @@ class RouteController extends Controller
             'route_active' => 'required'
         ]);
 
-        $route = \App\Route::find($route_id);
+        $route = $route_id;
 
         $route->method = request('route_method');
         $route->route = request('route_route');
@@ -73,8 +70,8 @@ class RouteController extends Controller
     }
 
     // Delete api
-    public function delete($route_id){
-        $route = \App\Route::find($route_id);
+    public function delete(Route $route_id){
+        $route = $route_id;
         $api_id = $route->api_id;
         $route->delete();
 
