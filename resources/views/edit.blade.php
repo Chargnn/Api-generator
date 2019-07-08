@@ -31,7 +31,20 @@
 
                 <button type="submit">Submit</button>
             @else
-                <h2 class="style5">No database for this api, add it manually in the application db</h2>
+                <h2 class="style5">Edit database connection to this api</h2>
+
+                <label for="database_host">Host</label>
+                <input type="text" name="database_host" value="" minlength="1" maxlength="255" required/><br/>
+                <label for="database_username">Username</label>
+                <input type="text" name="database_username" value="" minlength="1" maxlength="255" required/><br/>
+                <label for="database_password">Password</label>
+                <input type="password" name="database_password" value="" maxlength="255" /><br/>
+                <label for="database_database">Database</label>
+                <input type="text" name="database_database" value="" minlength="1" maxlength="255" required/><br/>
+
+                @include('partials.test-db-connection')
+
+                <button type="submit">Submit</button>
             @endif
         </form>
     </div>

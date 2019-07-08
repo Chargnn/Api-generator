@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Database;
 use App\Route;
 
 class RouteController extends Controller
@@ -11,10 +12,22 @@ class RouteController extends Controller
     // List api
     public function index($api_id){
         $routes = Route::where('api_id', '=', $api_id)->paginate($this->route_pagination);
+        $database = Database::where('api_id', '=', $api_id)->first();
 
-        return View('routes.index')
-            ->with('api_id', $api_id)
-            ->with('routes', $routes);
+        $view = View('routes.index');
+        $view->with('api_id', $api_id);
+        $view->with('routes', $routes);
+
+        if($database)
+            if (!Utils::testDbConnectionManual($database))
+                $view->withErrors(['Can\t seem to be able to connect to your database (' . $database->database_host . ').']);
+            else
+                $view->withSuccess(['Database connection successful']);
+        else
+            $view->withErrors(['Looks like you didn\'t entered a database for this api.']);
+
+
+        return $view;
     }
 
     // Create route form
@@ -36,8 +49,8 @@ class RouteController extends Controller
         request()->validate([
             'api_id' => 'required|min:1',
             'route_method' => 'required|min:3|max:255',
-            'route_route' => 'required|max:255',
-            'route_query' => 'required|max:255'
+            'route_route' => 'required|min:1|max:255',
+            'route_query' => 'required|min:1|max:255'
         ]);
 
         $route = new Route();
@@ -55,8 +68,8 @@ class RouteController extends Controller
     public function update(Route $route_id){
         request()->validate([
             'route_method' => 'required|min:3|max:255',
-            'route_route' => 'required|max:255',
-            'route_query' => 'required|max:255',
+            'route_route' => 'required|min:1|max:255',
+            'route_query' => 'required|min:1|max:255',
         ]);
 
         $route = $route_id;

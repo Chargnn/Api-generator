@@ -29,13 +29,24 @@ class Utils extends Controller
 
     }
 
-    public function testDbConnection(Request $request){
-
+    public function testDbConnection(){
         try{
-            $this->pdo = new \PDO('mysql:dbname='.$request->database_database.';host='.$request->database_host.';port=3306',
-                                 $request->database_user,
-                                 $request->database_password,
-                                 [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]);
+            new \PDO('mysql:dbname='.request('database_database').';host='.request('database_host').';port='.request('database_port'),
+                request('database_user'),
+                request('database_password'),
+                [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]);
+            return 'true';
+        } catch(\Exception $e) {
+            return $e;
+        }
+    }
+
+    public static function testDbConnectionManual(Database $database){
+        try{
+            new \PDO('mysql:dbname='.$database->database_database.';host='.$database->database_host.';port='.$database->database_port,
+                $database->database_user,
+                $database->database_password,
+                [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]);
             return 'true';
         } catch(\Exception $e) {
             return $e;

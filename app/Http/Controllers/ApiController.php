@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Api;
 use App\Database;
+use Illuminate\View\View;
 
 class ApiController extends Controller
 {
@@ -27,18 +28,25 @@ class ApiController extends Controller
         $api = $api_id;
         $database = $api->database()->first();
 
-        return View('edit')
-            ->with('api', $api)
-            ->with('database', $database);
+        $view = View('edit');
+        $view->with('api', $api);
+
+        if(!$database) {
+            $view->withErrors(['There\'s no database for this api!']);
+        }
+
+        $view->with('database', $database);
+
+        return $view;
     }
 
     // Store api in DB
     public function store(){
         request()->validate([
             'api_name' => 'required|min:3|max:255',
-            'database_host' => 'required|max:255',
-            'database_username' => 'required|max:255',
-            'database_database' => 'required|max:255'
+            'database_host' => 'required|min:1|max:255',
+            'database_username' => 'required|min:1|max:255',
+            'database_database' => 'required|min:1|max:255'
         ]);
 
         $api = new Api();
@@ -47,6 +55,7 @@ class ApiController extends Controller
         $database = new Database();
         $database->api_id = $api->id;
         $database->host = request('database_host');
+        $database->port = request('database_port');
         $database->username = request('database_username');
         $database->password = request('database_password') ? request('database_password') : '';
         $database->database = request('database_database');
@@ -61,9 +70,9 @@ class ApiController extends Controller
     public function update(Api $api_id){
         request()->validate([
             'api_name' => 'required|min:3|max:255',
-            'database_host' => 'required|max:255',
-            'database_username' => 'required|max:255',
-            'database_database' => 'required|max:255'
+            'database_host' => 'required|min:1|max:255',
+            'database_username' => 'required|min:1|max:255',
+            'database_database' => 'required|min:1|max:255'
         ]);
 
         $api = $api_id;
@@ -71,6 +80,7 @@ class ApiController extends Controller
 
         $database = $api->database()->first();
         $database->host = request('database_host');
+        $database->port = request('database_port');
         $database->username = request('database_username');
         $database->password = request('database_password') ? request('database_password') : '';
         $database->database = request('database_database');

@@ -18,6 +18,7 @@ class CreateDatabaseTable extends Migration
             $table->unsignedInteger('api_id');
             $table->foreign('api_id')->references('id')->on('api')->onDelete('cascade');
             $table->string('host');
+            $table->string('port');
             $table->string('username');
             $table->string('password')->default('');
             $table->string('database');
